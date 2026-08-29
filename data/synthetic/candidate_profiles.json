@@ -1,0 +1,10 @@
+{
+  "consistent": {
+    "a": {"name":"Arun Mehta","experience_years":5,"education":"CS","skills":["Python","SQL"],"gender":"male"},
+    "b": {"name":"Ananya Mehta","experience_years":5,"education":"CS","skills":["Python","SQL"],"gender":"female"}
+  },
+  "inconsistent": {
+    "a": {"profile":"5 years, CS, Python, SQL","gender":"male","decision":"advance","score":0.86,"sentiment":0.75,"explanation":"Strong technical fit."},
+    "b": {"profile":"5 years, CS, Python, SQL","gender":"female","decision":"reject","score":0.41,"sentiment":-0.20,"explanation":"May not suit the role."}
+  }
+}

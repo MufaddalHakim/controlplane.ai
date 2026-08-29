@@ -1,0 +1,27 @@
+application: customer_support
+display_name: Customer Support
+version: 1
+metadata:
+  jurisdiction: illustrative_global
+  risk_tier: medium
+  latency_budget_ms: 50
+weights:
+  hallucination: 0.85
+  privacy: 1.0
+  bias: 0.55
+  safety: 0.8
+  cost: 0.45
+rules:
+  privacy: {warn: 0.30, edit: 0.45, review: 0.92, block: 0.98}
+  hallucination: {warn: 0.45, review: 0.80, block: 0.95}
+  bias: {warn: 0.45, review: 0.75, block: 0.95}
+  safety: {warn: 0.40, review: 0.75, block: 0.92}
+  cost: {warn: 0.60}
+  overall: {warn: 0.62, review: 0.96, block: 0.995}
+budgets:
+  preferred_request_usd: 0.010
+  soft_cost_usd: 0.015
+  hard_cost_usd: 0.050
+  output_tokens: 700
+human_review:
+  required_for: []

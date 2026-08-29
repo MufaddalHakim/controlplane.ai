@@ -1,0 +1,27 @@
+application: decision_support
+display_name: High-Risk Decision Support
+version: 1
+metadata:
+  jurisdiction: illustrative_global
+  risk_tier: critical
+  latency_budget_ms: 250
+weights:
+  hallucination: 1.0
+  privacy: 0.9
+  bias: 1.0
+  safety: 0.85
+  cost: 0.30
+rules:
+  privacy: {warn: 0.25, edit: 0.35, review: 0.65, block: 0.90}
+  hallucination: {warn: 0.25, review: 0.55, block: 0.85}
+  bias: {warn: 0.30, review: 0.50, block: 0.90}
+  safety: {warn: 0.30, review: 0.60, block: 0.88}
+  cost: {warn: 0.75}
+  overall: {warn: 0.40, review: 0.68, block: 0.98}
+budgets:
+  preferred_request_usd: 0.050
+  soft_cost_usd: 0.080
+  hard_cost_usd: 0.250
+  output_tokens: 1600
+human_review:
+  required_for: [important_decision, severe_bias_signal]

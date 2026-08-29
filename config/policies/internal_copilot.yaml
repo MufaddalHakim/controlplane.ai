@@ -1,0 +1,27 @@
+application: internal_copilot
+display_name: Internal Knowledge Copilot
+version: 1
+metadata:
+  jurisdiction: illustrative_global
+  risk_tier: high
+  latency_budget_ms: 120
+weights:
+  hallucination: 1.0
+  privacy: 1.0
+  bias: 0.55
+  safety: 0.75
+  cost: 0.35
+rules:
+  privacy: {warn: 0.20, edit: 0.35, review: 0.70, block: 0.90}
+  hallucination: {warn: 0.35, edit: 0.58, review: 0.78, block: 0.92}
+  bias: {warn: 0.40, review: 0.70, block: 0.92}
+  safety: {warn: 0.35, review: 0.70, block: 0.90}
+  cost: {warn: 0.65}
+  overall: {warn: 0.52, review: 0.78, block: 0.93}
+budgets:
+  preferred_request_usd: 0.025
+  soft_cost_usd: 0.040
+  hard_cost_usd: 0.120
+  output_tokens: 1200
+human_review:
+  required_for: [confidential_leak]
