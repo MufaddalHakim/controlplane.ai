@@ -51,9 +51,46 @@ flowchart LR
 
 The generated social preview is available at [`frontend/public/og.png`](frontend/public/og.png). Before final competition upload, capture the Overview, policy-contrast Playground, and Review Console at 1440×900 and place them in `docs/screenshots/`.
 
+## Fresh clone setup
+
+Prerequisites:
+
+- Git
+- Python 3.11 or newer
+- npm (the project installs and uses its own compatible Node.js 22 runtime)
+
+Windows PowerShell:
+
+```powershell
+git clone <your-github-repository-url> controlplane-ai
+cd controlplane-ai
+python scripts/bootstrap.py
+.\.venv\Scripts\python.exe scripts\seed_demo.py --reset
+```
+
+macOS/Linux:
+
+```bash
+git clone <your-github-repository-url> controlplane-ai
+cd controlplane-ai
+python3 scripts/bootstrap.py
+.venv/bin/python scripts/seed_demo.py --reset
+```
+
+`scripts/bootstrap.py` creates an isolated Python virtual environment, installs the pinned root `requirements.txt`, and installs the locked frontend dependencies with `npm ci`. It does not require an API key.
+
+For manual Python installation, the root dependency manifest delegates to the canonical pinned backend manifest:
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+cd frontend
+npm ci
+```
+
 ## Quick start
 
-Prerequisites: Python 3.11+ and npm. The frontend installs a project-local compatible Node runtime, so it does not replace the system Node installation.
+If the repository is already cloned, bootstrap and seed it with:
 
 ```powershell
 python scripts/bootstrap.py
